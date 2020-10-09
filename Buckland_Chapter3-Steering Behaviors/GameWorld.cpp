@@ -58,6 +58,25 @@ GameWorld::GameWorld(int cx, int cy):
     Vector2D SpawnPos = Vector2D(cx/2.0+RandomClamped()*cx/2.0,
                                  cy/2.0+RandomClamped()*cy/2.0);
 
+ 
+    // Pour le moment il n'existe pas d'AgentLeader, Instancier la classe AgentLeader au dessus du code ci-dessous
+    AgentPoursuiveur* pAgentPoursuiveur = new AgentPoursuiveur(this,
+            a,
+            SpawnPos,                 //initial position
+            RandFloat() * TwoPi,        //start rotation
+            Vector2D(0, 0),            //velocity
+            Prm.VehicleMass,          //mass
+            Prm.MaxSteeringForce,     //max force
+            Prm.MaxSpeed,             //max velocity
+            Prm.MaxTurnRatePerSecond, //max turn rate
+            Prm.VehicleScale);        //scale
+   
+
+    m_Vehicles.push_back(pAgentPoursuiveur);
+
+    //add it to the cell subdivision
+    m_pCellSpace->AddEntity(pAgentPoursuiveur);
+    /*
     Vehicle* pVehicle = new Vehicle(this,
                                     SpawnPos,                 //initial position
                                     RandFloat()*TwoPi,        //start rotation
@@ -73,10 +92,10 @@ GameWorld::GameWorld(int cx, int cy):
     m_Vehicles.push_back(pVehicle);
 
     //add it to the cell subdivision
-    m_pCellSpace->AddEntity(pVehicle);
+    m_pCellSpace->AddEntity(pVehicle);*/
   }
 
-
+/*
 #define SHOAL
 #ifdef SHOAL
   m_Vehicles[Prm.NumAgents-1]->Steering()->FlockingOff();
@@ -91,7 +110,7 @@ GameWorld::GameWorld(int cx, int cy):
 
   }
 #endif
- 
+ */
   //create any obstacles or walls
   //CreateObstacles();
   //CreateWalls();

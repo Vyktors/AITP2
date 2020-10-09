@@ -108,8 +108,9 @@ public:
   const std::vector<Wall2D>&          Walls(){return m_Walls;}                          
   CellSpacePartition<Vehicle*>*       CellSpace(){return m_pCellSpace;}
   const std::vector<BaseGameEntity*>& Obstacles()const{return m_Obstacles;}
-  const std::vector<Vehicle*>&        Agents(){return m_Vehicles;}
+  const std::vector<Vehicle*>&        Agents(){return m_Vehicles;};
 
+  Vehicle*                            getVehicle(int pos) { return m_Vehicles.at(pos); }
 
   //handle WM_COMMAND messages
   void        HandleKeyPresses(WPARAM wParam);

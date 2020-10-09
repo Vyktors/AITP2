@@ -2,13 +2,7 @@
 #include "GameWorld.h"
 #include "Vehicle.h"
 #include "ParamLoader.h"
-
-#include "2d/C2DMatrix.h"
-#include "2d/Geometry.h"
 #include "SteeringBehaviors.h"
-#include "2d/Transformations.h"
-#include "misc/CellSpacePartition.h"
-#include "misc/cgdi.h"
 
 using std::vector;
 using std::list;
@@ -16,7 +10,7 @@ using std::list;
 //----------------------------- ctor -------------------------------------
 //------------------------------------------------------------------------
 AgentPoursuiveur::AgentPoursuiveur(GameWorld* world,
-                                    Vehicle* AgentPrecedent,
+                                    int posAgentCourant,
                                     Vector2D position,
                                     double    rotation,
                                     Vector2D velocity,
@@ -35,12 +29,18 @@ AgentPoursuiveur::AgentPoursuiveur(GameWorld* world,
                                                                 scale)
 {
     // Turn on Steering Behavior of AgentPoursuiveur
-
-        this->Steering()->ArriveOn();
-
-        this->Steering()->OffsetPursuitOn(AgentPrecedent, Vector2D(2, 2)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
+    if (posAgentCourant != 0) //Enlever le if lorsque la classe AgentLeader sera créé
+    {
+        this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(5,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
 
         this->Steering()->SeparationOn();
+    }
+    else //Déplacer la partie du else dans la classe AgentLeader
+    {
+        this->SetScale(Vector2D(10, 10));
+        this->Steering()->WanderOn();
+        this->SetMaxSpeed(120);
+    }
 }
 
 AgentPoursuiveur::~AgentPoursuiveur(){}

@@ -28,7 +28,7 @@ private:
 
 public:
 	AgentPoursuiveur(GameWorld* world,
-        Vehicle* AgentPrecedent,
+        int posAgentCourant,
         Vector2D position,
         double    rotation,
         Vector2D velocity,
