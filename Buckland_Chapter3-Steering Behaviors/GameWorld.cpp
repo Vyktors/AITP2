@@ -1,5 +1,7 @@
 #include "GameWorld.h"
 #include "Vehicle.h"
+#include "AgentPoursuiveur.h"
+#include "AgentLeader.h"
 #include "constants.h"
 #include "Obstacle.h"
 #include "2d/Geometry.h"
@@ -55,7 +57,6 @@ GameWorld::GameWorld(int cx, int cy):
     //determine a random starting position
     Vector2D SpawnPos = Vector2D(cx/2.0+RandomClamped()*cx/2.0,
                                  cy/2.0+RandomClamped()*cy/2.0);
-
 
     Vehicle* pVehicle = new Vehicle(this,
                                     SpawnPos,                 //initial position
