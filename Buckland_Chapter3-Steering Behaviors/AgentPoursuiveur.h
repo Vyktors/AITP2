@@ -6,7 +6,7 @@
 //  Name:   AgentPoursuiveur.h
 //
 //  Desc:   Definition of a AgentPoursuiveur. This class is a modified vehicle
-//			to implement an arrive and offsetpursuit steeringbehavior
+//			to implement an offsetpursuit and a separation steeringbehavior
 //
 //  Author: Samuel Potvin, Victor Guérin
 //
@@ -38,8 +38,7 @@ public:
         double    max_turn_rate,
         double    scale);
 
-	~AgentPoursuiveur();
-
+	~AgentPoursuiveur(){};
 };
 
 #endif
