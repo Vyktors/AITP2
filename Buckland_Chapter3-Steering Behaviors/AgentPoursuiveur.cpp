@@ -29,18 +29,8 @@ AgentPoursuiveur::AgentPoursuiveur(GameWorld* world,
                                                                 scale)
 {
     // Turn on Steering Behavior of AgentPoursuiveur
-    if (posAgentCourant != 0) //Enlever le if lorsque la classe AgentLeader sera créé
-    {
-        this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(1,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
 
-        //this->Steering()->SeparationOn();
-    }
-    else //Déplacer la partie du else dans la classe AgentLeader
-    {
-        this->SetScale(Vector2D(10, 10));
-        this->Steering()->WanderOn();
-        this->SetMaxSpeed(120);
-    }
+    this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(5,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
+    this->Steering()->SeparationOn();
 }
 
-AgentPoursuiveur::~AgentPoursuiveur(){}
