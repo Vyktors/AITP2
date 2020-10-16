@@ -52,6 +52,9 @@ private:
   //set true to pause the motion
   bool                          m_bPaused;
 
+  //set true to set the game automatic
+  bool                          m_pAutomatic;
+
   //local copy of client window dimensions
   int                           m_cxClient,
                                 m_cyClient;
@@ -118,6 +121,9 @@ public:
   
   void        TogglePause(){m_bPaused = !m_bPaused;}
   bool        Paused()const{return m_bPaused;}
+
+  void        SetAutomatic(bool b) { m_pAutomatic = b; }
+  bool        Automated() const { return m_pAutomatic; }
 
   Vector2D    Crosshair()const{return m_vCrosshair;}
   void        SetCrosshair(POINTS p);

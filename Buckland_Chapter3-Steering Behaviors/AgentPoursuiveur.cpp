@@ -31,9 +31,9 @@ AgentPoursuiveur::AgentPoursuiveur(GameWorld* world,
     // Turn on Steering Behavior of AgentPoursuiveur
     if (posAgentCourant != 0) //Enlever le if lorsque la classe AgentLeader sera créé
     {
-        this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(5,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
+        this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(1,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
 
-        this->Steering()->SeparationOn();
+        //this->Steering()->SeparationOn();
     }
     else //Déplacer la partie du else dans la classe AgentLeader
     {

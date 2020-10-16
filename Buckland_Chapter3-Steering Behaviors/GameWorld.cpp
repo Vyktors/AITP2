@@ -329,6 +329,32 @@ void GameWorld::HandleKeyPresses(WPARAM wParam)
         }
         break;
 
+    case VK_UP:
+    case 'W':
+        SetAutomatic(false);
+
+        break;
+    
+    case VK_DOWN:
+    case 'S':
+        SetAutomatic(false);
+        break;
+
+    case VK_LEFT:
+    case 'A':
+        SetAutomatic(false);
+        break;
+
+    case VK_RIGHT:
+    case 'D':
+        SetAutomatic(false);
+        break;
+
+    case 'T':
+        SetAutomatic(true);
+        break;
+
+
   }//end switch
 }
 
