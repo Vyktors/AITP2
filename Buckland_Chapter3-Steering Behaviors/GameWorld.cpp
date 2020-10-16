@@ -98,6 +98,8 @@ GameWorld::GameWorld(int cx, int cy):
     m_pCellSpace->AddEntity(pAgentPoursuiveur);
   }
 
+  ProtectTheLeader();
+
   //create any obstacles or walls
   //CreateObstacles();
   //CreateWalls();
@@ -597,4 +599,28 @@ void GameWorld::Render()
     m_pCellSpace->RenderCells();
   }
 
+}
+
+void GameWorld::ProtectTheLeader()
+{
+    Vehicle* ActualVehicle;
+    int xPos;
+    int yPos;
+    const int Radius = 50;
+    const float AngleDiv = 360 / (Prm.NumAgents - 1);
+    float CurrentAngle = 0;
+    double AngleRadian;
+
+    for (int i = 1; i < Prm.NumAgents; i++)
+    {
+        AngleRadian = CurrentAngle * (Pi / 180);
+
+        xPos = Radius * cos(AngleRadian);
+        yPos = Radius * sin(AngleRadian);
+
+        ActualVehicle = m_Vehicles[i];
+        ActualVehicle->Steering()->OffsetPursuitOn(m_Vehicles[0], Vector2D(yPos, xPos));
+
+        CurrentAngle += AngleDiv;
+    }
 }

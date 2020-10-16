@@ -39,6 +39,7 @@ public:
         double    scale);
 
 	~AgentPoursuiveur(){};
+
 };
 
 #endif

@@ -30,5 +30,5 @@ AgentLeader::AgentLeader (GameWorld* world,
     // Turn on Steering Behavior of AgentLeader
     this->SetScale(Vector2D(10, 10));
     this->Steering()->WanderOn();
-    this->SetMaxSpeed(120);
+    this->SetMaxSpeed(70);
 }
