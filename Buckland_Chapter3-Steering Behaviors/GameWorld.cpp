@@ -142,6 +142,7 @@ void GameWorld::Update(double time_elapsed)
   {
     m_Vehicles[a]->Update(time_elapsed);
   }
+  
 }
   
 
@@ -254,6 +255,50 @@ void GameWorld::SetCrosshair(POINTS p)
 
 
 //------------------------- HandleKeyPresses -----------------------------
+
+void GameWorld::HandleKeyPressesDown(WPARAM wParam) {
+    switch (wParam) {
+        case VK_UP:
+        case 'W':
+            SetAutomatic(false);
+            m_Vehicles[0]->Steering()->WanderOff();
+            m_Vehicles[0]->SetAutomatic(false);
+            m_Vehicles[0]->AddTargetArrive(Vector2D(0, -1));
+            break;
+
+        case VK_DOWN:
+        case 'S':
+            SetAutomatic(false);
+            m_Vehicles[0]->Steering()->WanderOff();
+            m_Vehicles[0]->SetAutomatic(false);
+            m_Vehicles[0]->AddTargetArrive(Vector2D(0, 1));
+            break;
+
+        case VK_LEFT:
+        case 'A':
+            SetAutomatic(false);
+            m_Vehicles[0]->Steering()->WanderOff();
+            m_Vehicles[0]->SetAutomatic(false);
+            m_Vehicles[0]->AddTargetArrive(Vector2D(-1, 0));
+            break;
+
+        case VK_RIGHT:
+        case 'D':
+            SetAutomatic(false);
+            m_Vehicles[0]->Steering()->WanderOff();
+            m_Vehicles[0]->SetAutomatic(false);
+            m_Vehicles[0]->AddTargetArrive(Vector2D(1, 0));
+            break;
+
+        case VK_SPACE:
+            SetAutomatic(false);
+            m_Vehicles[0]->Steering()->WanderOff();
+            m_Vehicles[0]->SetAutomatic(false);
+            m_Vehicles[0]->AddTargetArrive(Vector2D(0, 0));
+
+    }
+
+}
 void GameWorld::HandleKeyPresses(WPARAM wParam)
 {
 
@@ -316,34 +361,19 @@ void GameWorld::HandleKeyPresses(WPARAM wParam)
         }
         break;
 
-    case VK_UP:
-    case 'W':
-        SetAutomatic(false);
-
-        break;
-    
-    case VK_DOWN:
-    case 'S':
-        SetAutomatic(false);
-        break;
-
-    case VK_LEFT:
-    case 'A':
-        SetAutomatic(false);
-        break;
-
-    case VK_RIGHT:
-    case 'D':
-        SetAutomatic(false);
-        break;
-
+   
     case 'T':
         SetAutomatic(true);
+        m_Vehicles[0]->Steering()->WanderOn();
+        m_Vehicles[0]->SetAutomatic(true);
         break;
 
 
   }//end switch
 }
+
+
+
 
 
 

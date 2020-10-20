@@ -72,9 +72,25 @@ void Vehicle::Update(double time_elapsed)
 
   Vector2D SteeringForce;
 
-  //calculate the combined force from each steering behavior in the 
-  //vehicle's list
-  SteeringForce = m_pSteering->Calculate();
+  if (isAutomated()) {
+      //calculate the combined force from each steering behavior in the 
+ //vehicle's list
+      SteeringForce = m_pSteering->Calculate();
+  }
+
+  else {
+      double dist = m_manualSteering.Length();
+      if (dist > 0) {
+          double speed = MaxSpeed();
+
+          Vector2D DesiredVelocity = m_manualSteering / dist * speed;
+          SteeringForce = DesiredVelocity - Velocity();
+      }
+      else {
+          SteeringForce = Vector2D(0, 0);
+      }
+  }
+ 
     
   //Acceleration = Force/Mass
   Vector2D acceleration = SteeringForce / m_dMass;
@@ -171,6 +187,26 @@ void Vehicle::Render()
     Steering()->RenderAids();
   }
 }
+
+void Vehicle::AddTargetArrive(Vector2D v)
+{
+
+
+    v *= MaxSpeed() * 10; //Facteur de tournage par rapport à 1 , plus c'est gros, plus ça tourne
+
+    m_manualSteering += v;
+
+    double length = sqrt(m_manualSteering.x * m_manualSteering.x + m_manualSteering.y * m_manualSteering.y);
+
+    //normalize vector
+    m_manualSteering.x /= length;
+    m_manualSteering.y /= length;
+    
+    m_manualSteering.x *= MaxSpeed(); // Vecteur length
+    m_manualSteering.y *= MaxSpeed();   
+
+}
+
 
 
 //----------------------------- InitializeBuffer -----------------------------

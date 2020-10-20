@@ -44,8 +44,12 @@ private:
   //vector smoothed over the last few frames
   Vector2D             m_vSmoothedHeading;
 
+  Vector2D             m_manualSteering;
+
   //when true, smoothing is active
   bool                  m_bSmoothingOn;
+  
+  bool                  m_pAutomatic;
   
 
   //keeps a track of the most recent update time. (some of the
@@ -94,7 +98,12 @@ public:
   bool        isSmoothingOn()const{return m_bSmoothingOn;}
   void        SmoothingOn(){m_bSmoothingOn = true;}
   void        SmoothingOff(){m_bSmoothingOn = false;}
+  void        SetAutomatic(bool b) { m_pAutomatic = b; }
+  bool        isAutomated()const { return m_pAutomatic; }
   void        ToggleSmoothing(){m_bSmoothingOn = !m_bSmoothingOn;}
+
+  void        AddTargetArrive(Vector2D v);
+  void        StopTargetArrive() { m_manualSteering = Vector2D(0,0); }
   
   double       TimeElapsed()const{return m_dTimeElapsed;}
  

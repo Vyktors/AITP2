@@ -105,6 +105,13 @@ LRESULT CALLBACK WindowProc (HWND   hwnd,
     
     break;
 
+    case WM_KEYDOWN:
+      {
+        g_GameWorld->HandleKeyPressesDown(wParam);
+
+      }
+      break;
+
     case WM_KEYUP:
       {
         switch(wParam)
