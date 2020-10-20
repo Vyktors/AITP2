@@ -603,7 +603,6 @@ void GameWorld::Render()
 
 void GameWorld::ProtectTheLeader()
 {
-    Vehicle* ActualVehicle;
     int xPos;
     int yPos;
     const int Radius = 50;
@@ -618,8 +617,7 @@ void GameWorld::ProtectTheLeader()
         xPos = Radius * cos(AngleRadian);
         yPos = Radius * sin(AngleRadian);
 
-        ActualVehicle = m_Vehicles[i];
-        ActualVehicle->Steering()->OffsetPursuitOn(m_Vehicles[0], Vector2D(yPos, xPos));
+        m_Vehicles[i]->Steering()->OffsetPursuitOn(m_Vehicles[0], Vector2D(yPos, xPos));
 
         CurrentAngle += AngleDiv;
     }
