@@ -98,7 +98,7 @@ GameWorld::GameWorld(int cx, int cy):
     m_pCellSpace->AddEntity(pAgentPoursuiveur);
   }
 
-  ProtectTheLeader();
+  
 
   //create any obstacles or walls
   //CreateObstacles();
@@ -232,6 +232,14 @@ void GameWorld::CreateObstacles()
 }
 
 
+void GameWorld::SetAutomatic(bool b)
+{
+    m_pAutomatic = b;
+    m_Vehicles[0]->Steering()->WanderOff();
+    m_Vehicles[0]->SetAutomatic(false);
+    ProtectTheLeader();
+}
+
 //------------------------- Set Crosshair ------------------------------------
 //
 //  The user can set the position of the crosshair by right clicking the
@@ -263,41 +271,26 @@ void GameWorld::HandleKeyPressesDown(WPARAM wParam) {
         case VK_UP:
         case 'W':
             SetAutomatic(false);
-            m_Vehicles[0]->Steering()->WanderOff();
-            m_Vehicles[0]->SetAutomatic(false);
             m_Vehicles[0]->AddTargetArrive(Vector2D(0, -1));
             break;
 
         case VK_DOWN:
         case 'S':
             SetAutomatic(false);
-            m_Vehicles[0]->Steering()->WanderOff();
-            m_Vehicles[0]->SetAutomatic(false);
             m_Vehicles[0]->AddTargetArrive(Vector2D(0, 1));
             break;
 
         case VK_LEFT:
         case 'A':
             SetAutomatic(false);
-            m_Vehicles[0]->Steering()->WanderOff();
-            m_Vehicles[0]->SetAutomatic(false);
             m_Vehicles[0]->AddTargetArrive(Vector2D(-1, 0));
             break;
 
         case VK_RIGHT:
         case 'D':
             SetAutomatic(false);
-            m_Vehicles[0]->Steering()->WanderOff();
-            m_Vehicles[0]->SetAutomatic(false);
             m_Vehicles[0]->AddTargetArrive(Vector2D(1, 0));
             break;
-
-        case VK_SPACE:
-            SetAutomatic(false);
-            m_Vehicles[0]->Steering()->WanderOff();
-            m_Vehicles[0]->SetAutomatic(false);
-            m_Vehicles[0]->AddTargetArrive(Vector2D(0, 0));
-
     }
 
 }
