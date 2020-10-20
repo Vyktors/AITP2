@@ -234,10 +234,18 @@ void GameWorld::CreateObstacles()
 
 void GameWorld::SetAutomatic(bool b)
 {
+
     m_pAutomatic = b;
-    m_Vehicles[0]->Steering()->WanderOff();
-    m_Vehicles[0]->SetAutomatic(false);
-    ProtectTheLeader();
+    m_Vehicles[0]->SetAutomatic(b);
+    if (b) {
+        m_Vehicles[0]->Steering()->WanderOn();
+        InLinePursuit();
+    }
+    else {
+        m_Vehicles[0]->Steering()->WanderOff();
+        ProtectTheLeader();
+    }
+    
 }
 
 //------------------------- Set Crosshair ------------------------------------
@@ -361,6 +369,7 @@ void GameWorld::HandleKeyPresses(WPARAM wParam)
         SetAutomatic(true);
         m_Vehicles[0]->Steering()->WanderOn();
         m_Vehicles[0]->SetAutomatic(true);
+        InLinePursuit();
         break;
 
 
@@ -676,6 +685,6 @@ void GameWorld::InLinePursuit()
 {
     for (int i = 1; i < Prm.NumAgents; i++)
     {
-        m_Vehicles[i]->Steering()->OffsetPursuitOn(getVehicle(i - 1), Vector2D(0, 10));
+        m_Vehicles[i]->Steering()->OffsetPursuitOn(getVehicle(i - 1), Vector2D(1, 0));
     }
 }
