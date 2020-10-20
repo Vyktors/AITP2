@@ -123,7 +123,7 @@ public:
   void        TogglePause(){m_bPaused = !m_bPaused;}
   bool        Paused()const{return m_bPaused;}
 
-  void        SetAutomatic(bool b) { m_pAutomatic = b; }
+  void        SetAutomatic(bool b);
   bool        Automated() const { return m_pAutomatic; }
 
   Vector2D    Crosshair()const{return m_vCrosshair;}
