@@ -151,6 +151,7 @@ public:
   bool  ViewKeys()const{return m_bViewKeys;}
 
   void ProtectTheLeader();
+  void InLinePursuit();
 
 };
 
