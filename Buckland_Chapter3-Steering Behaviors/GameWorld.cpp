@@ -671,3 +671,11 @@ void GameWorld::ProtectTheLeader()
         CurrentAngle += AngleDiv;
     }
 }
+
+void GameWorld::InLinePursuit()
+{
+    for (int i = 1; i < Prm.NumAgents; i++)
+    {
+        m_Vehicles[i]->Steering()->OffsetPursuitOn(getVehicle(i - 1), Vector2D(0, 10));
+    }
+}
