@@ -72,6 +72,9 @@ private:
     prArrive                = GetNextParameterFloat();
 
     MaxTurnRatePerSecond    = Pi;
+
+    //Custom param
+    OffsetDistance = GetNextParameterInt();
   }
 
 public:
@@ -142,6 +145,9 @@ public:
   double prEvade;
   double prHide;
   double prArrive;
+
+  //Custom param
+  int OffsetDistance;
   
 };
 

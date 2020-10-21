@@ -147,7 +147,14 @@ void Vehicle::Render()
 
   else
   {
-    gdi->BluePen();
+      if (isAutomated())
+      {
+          gdi->BluePen(); 
+      }
+      else
+      {
+          gdi->GreenPen();
+      }
   }
 
   if (Steering()->isInterposeOn())

@@ -367,11 +367,8 @@ void GameWorld::HandleKeyPresses(WPARAM wParam)
    
     case 'T':
         SetAutomatic(true);
-        m_Vehicles[0]->Steering()->WanderOn();
-        m_Vehicles[0]->SetAutomatic(true);
         InLinePursuit();
         break;
-
 
   }//end switch
 }
@@ -574,7 +571,7 @@ void GameWorld::HandleMenuItems(WPARAM wParam, HWND hwnd)
       }
 
       break;
-      
+
   }//end switch
 }
 
@@ -685,6 +682,6 @@ void GameWorld::InLinePursuit()
 {
     for (int i = 1; i < Prm.NumAgents; i++)
     {
-        m_Vehicles[i]->Steering()->OffsetPursuitOn(getVehicle(i - 1), Vector2D(1, 0));
+        m_Vehicles[i]->Steering()->OffsetPursuitOn(getVehicle(i - 1), Vector2D(Prm.OffsetDistance, 0));
     }
 }

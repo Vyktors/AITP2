@@ -30,7 +30,7 @@ AgentPoursuiveur::AgentPoursuiveur(GameWorld* world,
 {
     // Turn on Steering Behavior of AgentPoursuiveur
 
-    this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(10,0)); //Vecteur écrit à la main. Peut-être créer une nouvelle variable dans params.ini ?
+    this->Steering()->OffsetPursuitOn(world->getVehicle(posAgentCourant - 1), Vector2D(Prm.OffsetDistance,0));
 
     this->Steering()->SeparationOn();
 }
