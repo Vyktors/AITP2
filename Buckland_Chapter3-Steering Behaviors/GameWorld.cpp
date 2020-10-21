@@ -661,7 +661,7 @@ void GameWorld::ProtectTheLeader()
     int xPos;
     int yPos;
     const int Radius = 50;
-    const float AngleDiv = 360 / (Prm.NumAgents - 1);
+    const float AngleDiv = 360.0 / (Prm.NumAgents - 1);
     float CurrentAngle = 0;
     double AngleRadian;
 
