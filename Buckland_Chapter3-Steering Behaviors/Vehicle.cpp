@@ -199,7 +199,7 @@ void Vehicle::AddTargetArrive(Vector2D v)
 {
 
 
-    v *= MaxSpeed() * 10; //Facteur de tournage par rapport à 1 , plus c'est gros, plus ça tourne
+    v *= MaxSpeed() * Prm.facteurTournage; //Facteur de tournage par rapport à 1 , plus c'est gros, plus ça tourne
 
     m_manualSteering += v;
 

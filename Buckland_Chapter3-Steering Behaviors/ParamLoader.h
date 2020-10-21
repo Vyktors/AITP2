@@ -75,6 +75,7 @@ private:
 
     //Custom param
     OffsetDistance = GetNextParameterInt();
+    facteurTournage = GetNextParameterInt();
   }
 
 public:
@@ -148,7 +149,7 @@ public:
 
   //Custom param
   int OffsetDistance;
-  
+  int facteurTournage;
 };
 
 
