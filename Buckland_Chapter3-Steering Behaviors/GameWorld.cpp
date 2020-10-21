@@ -239,10 +239,12 @@ void GameWorld::SetAutomatic(bool b)
     m_Vehicles[0]->SetAutomatic(b);
     if (b) {
         m_Vehicles[0]->Steering()->WanderOn();
+        m_Vehicles[0]->SetMaxSpeed(Prm.vitesseLeaderDefault);
         InLinePursuit();
     }
     else {
         m_Vehicles[0]->Steering()->WanderOff();
+        m_Vehicles[0]->SetMaxSpeed(Prm.vitesseLeaderManual);
         ProtectTheLeader();
     }
     

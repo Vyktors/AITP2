@@ -76,6 +76,8 @@ private:
     //Custom param
     OffsetDistance = GetNextParameterInt();
     facteurTournage = GetNextParameterInt();
+    vitesseLeaderDefault = GetNextParameterInt();
+    vitesseLeaderManual = GetNextParameterInt();
   }
 
 public:
@@ -150,6 +152,8 @@ public:
   //Custom param
   int OffsetDistance;
   int facteurTournage;
+  int vitesseLeaderDefault;
+  int vitesseLeaderManual;
 };
 
 
