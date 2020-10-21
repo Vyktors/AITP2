@@ -6,7 +6,7 @@
 
 **[Mathieu Victor Guérin](https://github.com/Vyktors)** - GUEM19029701
 
-### Fonction supplémentaire : 
+### Informations supplémentaires : 
 
 Afin de rendre l'agent leader en mode manuel (contrôlé par l'utilisateur), appuyer soit sur les flèches du clavier ou soit sur les touches W,A,S,D. Vous verrez que la couleur de l'agent leader est passé au vert et vous pourrez maintenant contrôler l'agent leader avec ces touches. Pour rendre l'agent leader en mode automatique, appuyer sur la touche "T" et la couleur de l'agent redeviendra bleu.
 
